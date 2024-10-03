@@ -1,0 +1,28 @@
+#%Module########################################################################
+##
+## duqtools modulefile for MARCONI GATEWAY (gfortran)
+##
+################################################################################
+proc ModulesHelp { } {
+    puts stderr "	Loads the environment for duqtools on GATEWAY for 3.1.1."
+    puts stderr "	"
+}
+
+module-whatis  "loads the GATEWAY environment for duqtools 3.1.1"
+
+set duqtoolsModuleDir [file dirname [file dirname [exec realpath $ModulesCurrentModulefile]]]
+setenv DUQTOOLS_DIR [file dirname $duqtoolsModuleDir]
+
+# Needed for Jintrac, just load it for now
+module load cineca
+
+# Just depend on JINTRAC/JAMS for every subdependency
+module use /gss_efgw_work/work/g2fjc/jintrac/32.0.1/modules
+module load jintrac/gateway
+module use /gss_efgw_work/work/g2fjc/cmg/jams/31.0.0/modules
+module load jams/gateway
+module load imaspy/1.0.0
+
+# Set the python paths
+append-path PATH $env(DUQTOOLS_DIR)/duqenv/bin
+append-path PYTHONPATH $env(DUQTOOLS_DIR)/duqenv/lib/python3.10/site-packages

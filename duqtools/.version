@@ -1,0 +1,10 @@
+#%Module########################################################################
+##
+## version file for duqtools
+##
+## We only have access to the gateway, so there is only a gateway module 
+## 
+##
+################################################################################
+
+set ModulesVersion  "3.1.1"
