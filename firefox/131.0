@@ -1,0 +1,17 @@
+#%Module########################################################################
+##
+## firefox modulefile for MARCONI GATEWAY (gfortran)
+##
+################################################################################
+proc ModulesHelp { } {
+    puts stderr "	Loads the environment for a recent firefox on GATEWAY"
+    puts stderr "	"
+}
+
+module-whatis  "loads the GATEWAY environment for firefox 131.0"
+
+set firefoxModuleDir [file dirname [file dirname [exec realpath $ModulesCurrentModulefile]]]
+setenv FIREFOX_DIR [file dirname $firefoxModuleDir]
+
+# Set the paths
+prepend-path PATH $env(FIREFOX_DIR)/firefox
